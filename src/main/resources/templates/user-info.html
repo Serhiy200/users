@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User</title>
+</head>
+<body>
+<div>
+ <p>Name: <a th:text="${user.name}" /></p>
+ <p>Surname: <a th:text="${user.surname}" /></p>
+ <p>Email: <a th:text="${user.email}" /></p>
+ <p>Age: <a th:text="${user.age}" /></p>
+    <a href="/">
+        <button type="submit">Back to main</button>
+    </a>
+</div>
+</body>
+</html>
