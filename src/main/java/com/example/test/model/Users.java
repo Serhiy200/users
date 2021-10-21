@@ -65,7 +65,7 @@ public class Users {
         this.password = password;
     }
 
-    public Users(long id, String name, String surname, String email, String password,int age) {
+    public Users(long id, String name, String surname, String email, String password, int age) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -81,5 +81,5 @@ public class Users {
         this.email = email;
         this.password = password;
         this.age = age;
-     }
+    }
 }

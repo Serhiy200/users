@@ -7,10 +7,10 @@
 </head>
 <body>
 <div th:each="user : ${users}">
-    <p th:text="${user.name}" />
-    <p th:text="${user.surname}" />
+    <p th:text="${user.name}"/>
+    <p th:text="${user.surname}"/>
     <a th:href="'/user/' + ${user.id}">Read more </a>
-<hr>
+    <hr>
 </div>
 </body>
 </html>
