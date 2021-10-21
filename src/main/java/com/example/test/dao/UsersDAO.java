@@ -16,14 +16,14 @@ public class UsersDAO {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public List<Users> getAllUsers(){
+    public List<Users> getAllUsers() {
         String query = "SELECT * FROM account";
-       return jdbcTemplate.query(query, new BeanPropertyRowMapper(Users.class));
+        return jdbcTemplate.query(query, new BeanPropertyRowMapper(Users.class));
     }
 
     public void regUser(Users users) {
-            String query = "INSERT INTO account(name,surname,email,password,age) VALUES (?,?,?,?,?)";
-             jdbcTemplate.update(query,users.getName(),users.getSurname(),users.getEmail(),users.getPassword(),users.getAge());
+        String query = "INSERT INTO account(name,surname,email,password,age) VALUES (?,?,?,?,?)";
+        jdbcTemplate.update(query, users.getName(), users.getSurname(), users.getEmail(), users.getPassword(), users.getAge());
     }
 
     public Users getUserByEmail(String email) {
@@ -33,10 +33,10 @@ public class UsersDAO {
 
     public Users login(Users users) throws Exception {
         Users userBD = getUserByEmail(users.getEmail());
-        if(userBD.getPassword().trim().equals(users.getPassword())){
+        if (userBD.getPassword().trim().equals(users.getPassword())) {
             return userBD;
-        }else {
-          throw new Exception();
+        } else {
+            throw new Exception();
         }
     }
 

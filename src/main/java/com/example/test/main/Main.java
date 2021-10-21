@@ -14,19 +14,19 @@ public class Main {
     private UsersDAO usersDAO;
 
     @GetMapping("/")
-    public String index(){
+    public String index() {
         return "main";
     }
 
     @GetMapping("/regist")
-    public String getRegistration(){
+    public String getRegistration() {
         return "regist";
     }
 
     @PostMapping("/regist")
     public String postRegistration(@ModelAttribute("user") Users users, Model model) {
         usersDAO.regUser(users);
-        model.addAttribute("user",users);
+        model.addAttribute("user", users);
         return "user-info";
     }
 
@@ -43,14 +43,14 @@ public class Main {
     }
 
     @GetMapping("/list-users")
-    public String getUsersList(Model model){
-        model.addAttribute("users",  usersDAO.getAllUsers());
+    public String getUsersList(Model model) {
+        model.addAttribute("users", usersDAO.getAllUsers());
         return "users-list";
     }
 
     @GetMapping("/user/{id}")
-    public String getUser(@PathVariable("id") int id, Model model){
-       model.addAttribute("user", usersDAO.getUserById(id));
+    public String getUser(@PathVariable("id") int id, Model model) {
+        model.addAttribute("user", usersDAO.getUserById(id));
         return "user-info";
     }
 }
