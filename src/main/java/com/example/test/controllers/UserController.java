@@ -15,6 +15,7 @@ public class Main {
 
     @GetMapping("/")
     public String index(){
+        usersDAO.tryNew();
         return "main";
     }
 
@@ -25,7 +26,7 @@ public class Main {
 
     @PostMapping("/regist")
     public String postRegistration(@ModelAttribute("user") Users users, Model model) {
-        usersDAO.regUser(users);
+//        usersDAO.regUser(users);
         model.addAttribute("user",users);
         return "user-info";
     }
@@ -34,7 +35,7 @@ public class Main {
     public String postLogin(@ModelAttribute("user") Users users, Model model) {
         Users userData = null;
         try {
-            userData = usersDAO.login(users);
+//            userData = usersDAO.login(users);
             model.addAttribute("user", userData);
         } catch (Exception e) {
             return "main";
@@ -44,13 +45,13 @@ public class Main {
 
     @GetMapping("/list-users")
     public String getUsersList(Model model){
-        model.addAttribute("users",  usersDAO.getAllUsers());
+//        model.addAttribute("users",  usersDAO.getAllUsers());
         return "users-list";
     }
 
     @GetMapping("/user/{id}")
     public String getUser(@PathVariable("id") int id, Model model){
-       model.addAttribute("user", usersDAO.getUserById(id));
+//       model.addAttribute("user", usersDAO.getUserById(id));
         return "user-info";
     }
 }
