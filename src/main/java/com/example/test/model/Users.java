@@ -1,85 +1,23 @@
 package com.example.test.model;
 
+import lombok.*;
+import org.springframework.lang.Nullable;
+
+@Value
+@RequiredArgsConstructor
 public class Users {
 
+    @Nullable
     private long id;
+    @Nullable
     private String name;
+    @Nullable
     private String surname;
+    @Nullable
     private String email;
+    @Nullable
     private String password;
+    @Nullable
     private int age;
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public Users() {
-    }
-
-    public Users(String email, String password) {
-        this.email = email;
-        this.password = password;
-    }
-
-    public Users(long id, String name, String surname, String email, String password,int age) {
-        this.id = id;
-        this.name = name;
-        this.surname = surname;
-        this.email = email;
-        this.password = password;
-        this.age = age;
-    }
-
-    public Users(String name, String surname, String email, String password, int age) {
-//        this.id = id;
-        this.name = name;
-        this.surname = surname;
-        this.email = email;
-        this.password = password;
-        this.age = age;
-     }
 }
