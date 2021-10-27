@@ -1,19 +1,17 @@
 package com.example.test.controllers;
 
-import com.example.test.dao.UsersDAO;
-import com.example.test.model.Users;
+import com.example.test.model.User;
+import com.example.test.service.UserService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
+@RequiredArgsConstructor
 public class UserController {
 
-    private final UsersDAO usersDAO;
-
-    public UserController(UsersDAO usersDAO) {
-        this.usersDAO = usersDAO;
-    }
+    private final UserService userService;
 
     @GetMapping("/")
     public String index() {
@@ -26,20 +24,20 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String postRegistration(@ModelAttribute("user") Users users, Model model) {
+    public String postRegistration(@ModelAttribute("user") User user, Model model) {
         try {
-            usersDAO.registerUser(users);
+            userService.registerUser(user);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        model.addAttribute("user", users);
+        model.addAttribute("user", user);
         return "user";
     }
 
     @PostMapping("/login")
-    public String postLogin(@ModelAttribute("user") Users users, Model model) {
+    public String postLogin(@ModelAttribute("user") User user, Model model) {
         try {
-            Users userData = usersDAO.login(users);
+            User userData = userService.login(user);
             model.addAttribute("user", userData);
         } catch (Exception e) {
             model.addAttribute("error", e.getMessage());
@@ -51,7 +49,7 @@ public class UserController {
     @GetMapping("/users")
     public String getUsersList(Model model) {
         try {
-            model.addAttribute("users", usersDAO.getAllUsers());
+            model.addAttribute("users", userService.getAllUsers());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -61,7 +59,7 @@ public class UserController {
     @GetMapping("/user/{id}")
     public String getUser(@PathVariable("id") int id, Model model) {
         try {
-            model.addAttribute("user", usersDAO.getUserById(id));
+            model.addAttribute("user", userService.getUserById(id));
         } catch (Exception e) {
             e.printStackTrace();
         }

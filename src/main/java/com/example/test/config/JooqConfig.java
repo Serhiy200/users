@@ -28,7 +28,6 @@ public class JooqConfig {
     @Bean
     public DataSource dataSource() {
         PGSimpleDataSource dataSource = new PGSimpleDataSource();
-
         dataSource.setUrl(environment.getRequiredProperty("spring.datasource.url"));
         dataSource.setUser(environment.getRequiredProperty("spring.datasource.username"));
         dataSource.setPassword(environment.getRequiredProperty("spring.datasource.password"));
@@ -50,14 +49,10 @@ public class JooqConfig {
         return new DefaultDSLContext(configuration());
     }
 
-    @Bean
     public DefaultConfiguration configuration() {
         DefaultConfiguration jooqConfiguration = new DefaultConfiguration();
         jooqConfiguration.set(connectionProvider());
-
-        SQLDialect dialect = SQLDialect.POSTGRES;
-        jooqConfiguration.set(dialect);
-
+        jooqConfiguration.set(SQLDialect.POSTGRES);
         return jooqConfiguration;
     }
 }

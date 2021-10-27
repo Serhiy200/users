@@ -5,7 +5,7 @@ import org.springframework.lang.Nullable;
 
 @Value
 @RequiredArgsConstructor
-public class Users {
+public class User {
 
     @Nullable
     private long id;

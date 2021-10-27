@@ -82,6 +82,19 @@
             <version>4.13.2</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>com.opencsv</groupId>
+            <artifactId>opencsv</artifactId>
+            <version>5.3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.8.8</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -108,6 +121,11 @@
                                 <password>root</password>
                             </jdbc>
                             <generator>
+                                <database>
+                                    <includes>
+                                        ACCOUNT
+                                    </includes>
+                                </database>
                                 <target>
                                     <packageName>com.example.test.jooq</packageName>
                                     <directory>src/main/java</directory>
