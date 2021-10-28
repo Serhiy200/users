@@ -122,9 +122,7 @@
                             </jdbc>
                             <generator>
                                 <database>
-                                    <includes>
-                                        ACCOUNT
-                                    </includes>
+                                    <includes>ACCOUNT</includes>
                                 </database>
                                 <target>
                                     <packageName>com.example.test.jooq</packageName>
